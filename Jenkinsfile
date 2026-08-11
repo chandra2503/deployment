@@ -61,7 +61,7 @@ pipeline {
                 sh '''
                     microk8s kubectl set image \
                     deployment/nginx-deployment \
-                    myapp=chandrakalaj/myapp1:${BUILD_NUMBER}
+                    myapp1=chandrakalaj/myapp1:${BUILD_NUMBER}
                 '''
             }
         }
