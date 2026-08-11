@@ -1,0 +1,6 @@
+.git
+.gitignore
+Jenkinsfile
+deployment.yaml
+service.yaml
+README.md
