@@ -1,57 +1,772 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Web Page</title>
+
+    <title>Puneeth Rajkumar | Tribute</title>
 
     <style>
-        body {
+        * {
             margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f2f2f2;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #0b0b0b;
+            color: white;
+            line-height: 1.6;
+        }
+
+        /* NAVIGATION */
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 18px 7%;
+
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ffd700;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ffd700;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
             text-align: center;
+
+            padding: 120px 20px 80px;
+
+            background:
+                linear-gradient(
+                    rgba(0,0,0,0.65),
+                    rgba(0,0,0,0.9)
+                ),
+                radial-gradient(
+                    circle at center,
+                    #5a4200,
+                    #111 60%,
+                    #000
+                );
         }
 
-        .container {
-            padding: 100px 20px;
+        .hero-content {
+            max-width: 900px;
         }
 
-        h1 {
-            font-size: 40px;
+        .hero h1 {
+            font-size: clamp(45px, 8vw, 90px);
+            color: #ffd700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
         }
 
-        p {
-            font-size: 20px;
+        .hero h2 {
+            font-size: clamp(22px, 4vw, 38px);
+            margin-bottom: 20px;
         }
 
-        button {
-            padding: 12px 25px;
-            font-size: 16px;
-            cursor: pointer;
+        .hero p {
+            max-width: 700px;
+            margin: auto;
+            color: #ddd;
+            font-size: 19px;
+        }
+
+        .hero-buttons {
+            margin-top: 35px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 13px 28px;
+            margin: 8px;
+
+            border-radius: 30px;
+
+            text-decoration: none;
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .btn-gold {
+            background: #ffd700;
+            color: #000;
+        }
+
+        .btn-dark {
+            border: 1px solid #ffd700;
+            color: #ffd700;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            opacity: 0.85;
+        }
+
+        /* SECTIONS */
+
+        section {
+            padding: 90px 7%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 42px;
+            color: #ffd700;
+        }
+
+        .section-title p {
+            color: #aaa;
+        }
+
+        /* ABOUT */
+
+        .about {
+            background: #111;
+        }
+
+        .about-container {
+            max-width: 1100px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-image {
+            min-height: 400px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border: 2px solid #ffd700;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #2b2100,
+                    #080808
+                );
+        }
+
+        .about-image span {
+            font-size: 100px;
+            color: #ffd700;
+        }
+
+        .about-text h3 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            color: #ccc;
+            margin-bottom: 15px;
+        }
+
+        /* MOVIES */
+
+        .movies {
+            background: #080808;
+        }
+
+        .movie-grid {
+            max-width: 1200px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .movie-card {
+            background: #151515;
+            border-radius: 12px;
+            overflow: hidden;
+
+            border: 1px solid #292929;
+
+            transition: 0.3s;
+        }
+
+        .movie-card:hover {
+            transform: translateY(-8px);
+            border-color: #ffd700;
+        }
+
+        .movie-poster {
+            height: 190px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #4b3900,
+                    #151515
+                );
+        }
+
+        .movie-poster span {
+            font-size: 50px;
+        }
+
+        .movie-info {
+            padding: 20px;
+        }
+
+        .movie-info h3 {
+            color: #ffd700;
+            margin-bottom: 8px;
+        }
+
+        .movie-info p {
+            color: #aaa;
+        }
+
+        /* ACHIEVEMENTS */
+
+        .achievements {
+            background: #111;
+        }
+
+        .achievement-grid {
+            max-width: 1000px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .achievement {
+            text-align: center;
+
+            padding: 35px 20px;
+
+            background: #181818;
+            border-radius: 10px;
+        }
+
+        .achievement .number {
+            font-size: 45px;
+            font-weight: bold;
+            color: #ffd700;
+        }
+
+        .achievement h3 {
+            margin-top: 10px;
+        }
+
+        .achievement p {
+            color: #999;
+        }
+
+        /* QUOTE */
+
+        .quote {
+            text-align: center;
+
+            background:
+                linear-gradient(
+                    rgba(0,0,0,0.8),
+                    rgba(0,0,0,0.8)
+                ),
+                #3b2b00;
+        }
+
+        .quote blockquote {
+            max-width: 900px;
+            margin: auto;
+
+            font-size: clamp(25px, 4vw, 45px);
+            font-weight: bold;
+
+            color: #ffd700;
+        }
+
+        .quote p {
+            margin-top: 25px;
+            color: #ddd;
+        }
+
+        /* TRIBUTE */
+
+        .tribute {
+            text-align: center;
+            background: #050505;
+        }
+
+        .tribute h2 {
+            font-size: 45px;
+            color: #ffd700;
+            margin-bottom: 20px;
+        }
+
+        .tribute p {
+            max-width: 750px;
+            margin: auto;
+
+            color: #ccc;
+            font-size: 18px;
+        }
+
+        .heart {
+            font-size: 60px;
+            margin: 25px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            padding: 30px 20px;
+
+            text-align: center;
+
+            background: #000;
+
+            color: #888;
+        }
+
+        footer strong {
+            color: #ffd700;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 800px) {
+
+            nav {
+                padding: 15px 5%;
+            }
+
+            .nav-links {
+                gap: 12px;
+                font-size: 13px;
+            }
+
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+
+            .movie-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .achievement-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 70px 5%;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            .logo {
+                font-size: 18px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 43px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <div class="container">
-        <h1>🚀 Web Page is Running!</h1>
-        <p>Hello! Your Nginx Docker website is working.</p>
+    <!-- NAVIGATION -->
 
-        <button onclick="showMessage()">
-            Click Me
-        </button>
+    <nav>
+        <div class="logo">APPUMANE</div>
 
-        <p id="message"></p>
-    </div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#movies">Movies</a></li>
+            <li><a href="#achievements">Achievements</a></li>
+            <li><a href="#tribute">Tribute</a></li>
+        </ul>
+    </nav>
 
-    <script>
-        function showMessage() {
-            document.getElementById("message").innerHTML =
-                "✅ Button is working!";
-        }
-    </script>
+
+    <!-- HERO -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <h1>Puneeth Rajkumar</h1>
+
+            <h2>Power Star • Appu • Forever in Our Hearts</h2>
+
+            <p>
+                Celebrating the life, work and legacy of one of Kannada
+                cinema's most loved stars.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="#about" class="btn btn-gold">
+                    Explore His Journey
+                </a>
+
+                <a href="#tribute" class="btn btn-dark">
+                    Tribute
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section class="about" id="about">
+
+        <div class="section-title">
+
+            <h2>About Appu</h2>
+
+            <p>A beloved name in Kannada cinema</p>
+
+        </div>
+
+        <div class="about-container">
+
+            <div class="about-image">
+                <span>★</span>
+            </div>
+
+            <div class="about-text">
+
+                <h3>Power Star Puneeth Rajkumar</h3>
+
+                <p>
+                    Puneeth Rajkumar was one of the most admired actors
+                    and entertainers in Kannada cinema.
+                </p>
+
+                <p>
+                    Known affectionately as Appu, he was loved by audiences
+                    for his acting, dancing, singing and humble personality.
+                </p>
+
+                <p>
+                    His contribution to Kannada cinema and his connection
+                    with fans continue to inspire generations.
+                </p>
+
+                <p>
+                    <strong>ಅಪ್ಪು ಎಂದೆಂದಿಗೂ ನಮ್ಮ ಹೃದಯದಲ್ಲಿ.</strong>
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- MOVIES -->
+
+    <section class="movies" id="movies">
+
+        <div class="section-title">
+
+            <h2>Popular Movies</h2>
+
+            <p>Some memorable films from his journey</p>
+
+        </div>
+
+        <div class="movie-grid">
+
+            <div class="movie-card">
+
+                <div class="movie-poster">
+                    <span>🎬</span>
+                </div>
+
+                <div class="movie-info">
+                    <h3>Appu</h3>
+                    <p>
+                        A landmark film that became closely associated
+                        with his identity as Appu.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="movie-card">
+
+                <div class="movie-poster">
+                    <span>🎬</span>
+                </div>
+
+                <div class="movie-info">
+                    <h3>Milana</h3>
+                    <p>
+                        A much-loved romantic drama featuring Puneeth
+                        Rajkumar in a memorable role.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="movie-card">
+
+                <div class="movie-poster">
+                    <span>🎬</span>
+                </div>
+
+                <div class="movie-info">
+                    <h3>Raajakumara</h3>
+                    <p>
+                        One of the most celebrated films of his career,
+                        loved by audiences across Karnataka.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="movie-card">
+
+                <div class="movie-poster">
+                    <span>🎬</span>
+                </div>
+
+                <div class="movie-info">
+                    <h3>Anjani Putra</h3>
+                    <p>
+                        An action entertainer showcasing his energetic
+                        screen presence.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="movie-card">
+
+                <div class="movie-poster">
+                    <span>🎬</span>
+                </div>
+
+                <div class="movie-info">
+                    <h3>Ninnindale</h3>
+                    <p>
+                        A romantic entertainer with a fresh and stylish
+                        presentation.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="movie-card">
+
+                <div class="movie-poster">
+                    <span>🎬</span>
+                </div>
+
+                <div class="movie-info">
+                    <h3>Yuvarathnaa</h3>
+                    <p>
+                        A powerful film remembered for its message and
+                        Puneeth's performance.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ACHIEVEMENTS -->
+
+    <section class="achievements" id="achievements">
+
+        <div class="section-title">
+
+            <h2>His Legacy</h2>
+
+            <p>More than an actor</p>
+
+        </div>
+
+        <div class="achievement-grid">
+
+            <div class="achievement">
+
+                <div class="number">★</div>
+
+                <h3>Power Star</h3>
+
+                <p>
+                    A title cherished by millions of fans.
+                </p>
+
+            </div>
+
+
+            <div class="achievement">
+
+                <div class="number">♥</div>
+
+                <h3>Millions of Fans</h3>
+
+                <p>
+                    His popularity reached audiences across generations.
+                </p>
+
+            </div>
+
+
+            <div class="achievement">
+
+                <div class="number">∞</div>
+
+                <h3>Forever</h3>
+
+                <p>
+                    His work and memories continue to live on.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- QUOTE -->
+
+    <section class="quote">
+
+        <blockquote>
+            "A star may shine in the sky,
+            but a legend shines forever in our hearts."
+        </blockquote>
+
+        <p>
+            — A tribute to Puneeth Rajkumar
+        </p>
+
+    </section>
+
+
+    <!-- TRIBUTE -->
+
+    <section class="tribute" id="tribute">
+
+        <div class="heart">❤️</div>
+
+        <h2>Appu Forever</h2>
+
+        <p>
+            Your smile, your films, your songs and your kindness
+            will always remain a beautiful part of Kannada cinema
+            and the memories of your fans.
+        </p>
+
+        <br>
+
+        <p>
+            <strong>
+                ಅಪ್ಪು ಅಮರ.
+            </strong>
+        </p>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            Made with ❤️ as a fan tribute to
+            <strong>Puneeth Rajkumar</strong>
+        </p>
+
+        <p>
+            © 2026 Appu Tribute Page
+        </p>
+
+    </footer>
 
 </body>
 </html>
+```
