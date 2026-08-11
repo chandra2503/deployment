@@ -21,7 +21,7 @@ spec:
 
     spec:
       containers:
-        - name: myapp
+        - name: myapp1
           image: chandrakalaj/myapp1:latest
           imagePullPolicy: Always
 
