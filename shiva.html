@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lord Shiva | Har Har Mahadev</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #05080d;
+            color: white;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 80px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 5%;
+
+            background: rgba(5, 8, 13, 0.85);
+            backdrop-filter: blur(10px);
+
+            border-bottom: 1px solid rgba(255, 170, 0, 0.3);
+
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .om {
+            font-size: 42px;
+            color: #ffae00;
+        }
+
+        .logo-text h2 {
+            font-size: 23px;
+            color: white;
+        }
+
+        .logo-text span {
+            color: #ffae00;
+            font-size: 14px;
+        }
+
+        .menu {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+        }
+
+        .menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .menu a:hover {
+            color: #ffae00;
+        }
+
+        .nav-button {
+            padding: 13px 25px;
+            border: 1px solid #ffae00;
+            border-radius: 8px;
+            color: #ffae00;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 100vh;
+
+            position: relative;
+
+            display: flex;
+            align-items: center;
+
+            padding: 120px 5% 80px;
+
+            background-image:
+                linear-gradient(
+                    90deg,
+                    rgba(3, 8, 15, 0.96) 0%,
+                    rgba(3, 8, 15, 0.75) 35%,
+                    rgba(3, 8, 15, 0.15) 75%
+                ),
+                url("shiva.png");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            max-width: 620px;
+        }
+
+        .small-title {
+            letter-spacing: 10px;
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+
+        .hero h1 {
+            font-size: clamp(60px, 9vw, 110px);
+            color: #ffae00;
+            line-height: 0.95;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            font-weight: 900;
+        }
+
+        .trishul {
+            color: #ffae00;
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 19px;
+            line-height: 1.8;
+            color: #eee;
+            margin-bottom: 30px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 16px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: #ffae00;
+            color: #07101a;
+        }
+
+        .btn-secondary {
+            border: 2px solid #ffae00;
+            color: #ffae00;
+        }
+
+        .btn:hover {
+            transform: translateY(-4px);
+        }
+
+        /* CARDS */
+
+        .cards {
+            position: absolute;
+
+            left: 5%;
+            right: 5%;
+            bottom: 25px;
+
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 15px;
+        }
+
+        .card {
+            padding: 20px;
+
+            background: rgba(10, 15, 23, 0.85);
+
+            border: 1px solid rgba(255, 255, 255, 0.25);
+
+            border-radius: 12px;
+
+            backdrop-filter: blur(8px);
+
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            border-color: #ffae00;
+            transform: translateY(-5px);
+        }
+
+        .card-icon {
+            font-size: 35px;
+            color: #ffae00;
+            margin-bottom: 10px;
+        }
+
+        .card h3 {
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            font-size: 14px;
+            color: #bbb;
+            line-height: 1.5;
+        }
+
+        /* ABOUT */
+
+        .about {
+            padding: 100px 7%;
+            text-align: center;
+            background: #080d14;
+        }
+
+        .section-title {
+            color: #ffae00;
+            font-size: 45px;
+            margin-bottom: 20px;
+        }
+
+        .about-text {
+            max-width: 850px;
+            margin: auto;
+            color: #ccc;
+            font-size: 18px;
+            line-height: 1.9;
+        }
+
+        /* MANTRA */
+
+        .mantra {
+            padding: 100px 20px;
+            text-align: center;
+
+            background:
+                linear-gradient(
+                    rgba(0,0,0,.75),
+                    rgba(0,0,0,.9)
+                ),
+                url("shiva.png");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+        .mantra h2 {
+            color: #ffae00;
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        .mantra p {
+            font-size: 28px;
+            letter-spacing: 4px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            text-align: center;
+            padding: 35px;
+            background: #020405;
+            color: #888;
+        }
+
+        footer strong {
+            color: #ffae00;
+        }
+
+        /* MOBILE */
+
+        @media(max-width: 900px) {
+
+            .menu {
+                display: none;
+            }
+
+            .nav-button {
+                display: none;
+            }
+
+            .hero {
+                padding-bottom: 350px;
+            }
+
+            .cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media(max-width: 600px) {
+
+            nav {
+                height: 65px;
+            }
+
+            .logo-text h2 {
+                font-size: 18px;
+            }
+
+            .om {
+                font-size: 30px;
+            }
+
+            .hero {
+                min-height: 1000px;
+                background-position: 62% center;
+            }
+
+            .hero h1 {
+                font-size: 55px;
+            }
+
+            .small-title {
+                font-size: 18px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+                bottom: 20px;
+            }
+
+            .section-title {
+                font-size: 35px;
+            }
+
+            .mantra h2 {
+                font-size: 38px;
+            }
+
+            .mantra p {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <nav>
+
+        <div class="logo">
+
+            <div class="om">ॐ</div>
+
+            <div class="logo-text">
+                <h2>LORD <span>SHIVA</span></h2>
+                <span>Har Har Mahadev</span>
+            </div>
+
+        </div>
+
+        <ul class="menu">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#shiva">Lord Shiva</a></li>
+            <li><a href="#mantra">Mantras</a></li>
+        </ul>
+
+        <a href="#mantra" class="nav-button">
+            OM NAMAH SHIVAYA
+        </a>
+
+    </nav>
+
+
+    <!-- HERO -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <div class="small-title">
+                HAR HAR
+            </div>
+
+            <h1>
+                MAHADEV
+            </h1>
+
+            <div class="trishul">
+                🔱
+            </div>
+
+            <p>
+                Lord Shiva is revered as the embodiment of
+                peace, power, wisdom and transformation.
+                May the blessings of Mahadev bring strength,
+                peace and happiness.
+            </p>
+
+            <div class="buttons">
+
+                <a href="#about" class="btn btn-primary">
+                    DISCOVER MORE
+                </a>
+
+                <a href="#mantra" class="btn btn-secondary">
+                    ॐ MANTRA
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- FEATURE CARDS -->
+
+        <div class="cards">
+
+            <div class="card">
+
+                <div class="card-icon">🪷</div>
+
+                <h3>
+                    The Destroyer
+                </h3>
+
+                <p>
+                    Shiva represents transformation
+                    and the destruction of negativity.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-icon">🔱</div>
+
+                <h3>
+                    The Supreme Yogi
+                </h3>
+
+                <p>
+                    Symbol of meditation, discipline,
+                    wisdom and inner peace.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-icon">ॐ</div>
+
+                <h3>
+                    The Eternal One
+                </h3>
+
+                <p>
+                    A timeless symbol of consciousness
+                    and spiritual awareness.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-icon">🕉</div>
+
+                <h3>
+                    The Auspicious One
+                </h3>
+
+                <p>
+                    A symbol of peace, prosperity
+                    and divine grace.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section class="about" id="about">
+
+        <h2 class="section-title">
+            Lord Shiva
+        </h2>
+
+        <p class="about-text">
+            Lord Shiva is one of the principal deities of
+            Hinduism and is widely revered as Mahadeva,
+            the great god. He is associated with meditation,
+            transformation, compassion and spiritual liberation.
+            His iconic symbols include the trishula, damaru,
+            crescent moon and the sacred river Ganga.
+        </p>
+
+    </section>
+
+
+    <!-- MANTRA -->
+
+    <section class="mantra" id="mantra">
+
+        <h2>
+            ॐ नमः शिवाय
+        </h2>
+
+        <p>
+            OM NAMAH SHIVAYA
+        </p>
+
+        <br>
+
+        <p>
+            हर हर महादेव 🔱
+        </p>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            Made with devotion ❤️
+        </p>
+
+        <p>
+            <strong>ॐ नमः शिवाय</strong>
+        </p>
+
+    </footer>
+
+</body>
+</html>
