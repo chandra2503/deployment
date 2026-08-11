@@ -46,15 +46,12 @@ pipeline {
         }
 
         stage('Deploy Kubernetes') {
-            steps {
-                sh '''
-                    microk8s kubectl apply -f deploymentfile.yaml
-                    microk8s kubectl apply -f servicefile.yaml
-                '''
-            }
-        }
-
-        stage('Update Kubernetes Image') {
+    steps {
+        sh 'microk8s kubectl apply -f deploymentfile.yaml'
+        sh 'microk8s kubectl apply -f servicefile.yaml'
+    }
+}
+ stage('Update Kubernetes Image') {
             steps {
                 sh '''
                     microk8s kubectl set image \
