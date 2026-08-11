@@ -1,6 +1,6 @@
 FROM nginx:latest
 
-COPY . /usr/share/nginx/html/
+COPY wed.html /usr/share/nginx/html/web.html
 
 EXPOSE 80
 
